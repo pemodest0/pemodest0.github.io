@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galileu no navegador</title>
+<meta name="description" content="Laboratório de física de um e dois corpos rodando o código da pesquisa de Pedro Modesto direto no navegador.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
+<link rel="stylesheet" href="style.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<header>
+  <a class="brand" href="../"><img src="icon.svg" alt=""><span>Galileu&nbsp;Galilei</span><small>laboratório no navegador</small></a>
+  <nav id="tabs">
+    <button data-tab="one" class="on">1 corpo</button>
+    <button data-tab="two">2 corpos</button>
+    <button data-tab="about">Sobre</button>
+  </nav>
+  <div id="status"><span id="py" class="pill warn">Python carregando</span><a id="commit" class="pill" target="_blank" rel="noreferrer" hidden></a></div>
+</header>
+
+<main>
+  <aside id="left">
+    <section data-pane="one" class="pane on">
+      <label>Experimento
+        <select id="exp-one">
+          <option value="spectrum">Espectro: níveis e funções de onda</option>
+          <option value="evolve">Pacote de onda no tempo</option>
+          <option value="tunnelling">Tunelamento na barreira quadrada</option>
+        </select>
+      </label>
+      <div id="form-one" class="stack"></div>
+      <button class="primary run" data-system="one" disabled>Rodar</button>
+      <p class="hint">Unidades com ħ = m = 1. O cálculo roda no seu navegador; nada é enviado para servidor nenhum.</p>
+    </section>
+
+    <section data-pane="two" class="pane">
+      <label>Experimento
+        <select id="exp-two">
+          <option value="calibrate">Calibrar um potencial em (a, r₀)</option>
+          <option value="helium">Dímero de hélio: potencial medido</option>
+        </select>
+      </label>
+      <div id="form-two" class="stack"></div>
+      <button class="primary run" data-system="two" disabled>Rodar</button>
+      <p class="hint">Comprimentos na unidade dos parâmetros (fm para os alvos nucleares, Å para o hélio). Energias do modelo em unidades de ħ²/m<sub>r</sub>.</p>
+    </section>
+
+    <section data-pane="about" class="pane">
+      <p class="hint"><b>O que é.</b> O painel de laboratório do Galileu, o assistente de pesquisa que roda no computador do Pedro, aqui sem instalar nada. Os solvers são <code>lab.py</code> e <code>schrodinger.py</code> do repositório público <a href="https://github.com/pemodest0/Low-energy-scattering" target="_blank" rel="noreferrer">Low-energy-scattering</a>, baixados na hora, sem cópia: o selo no topo mostra o commit.</p>
+      <p class="hint"><b>Como confere.</b> Cada número sai por dois caminhos independentes, ou é comparado com a forma fechada ou com a tabela publicada, e ao lado de cada resultado está o que o derrubaria.</p>
+      <p class="hint"><b>O que fica de fora.</b> A conversa, a biblioteca de artigos, o gêmeo em Julia e os arquivos de cada execução: precisam do modelo de linguagem local e dos artigos, e continuam só no Galileu local. Aqui as grades são mais grossas para caber no tempo do navegador.</p>
+    </section>
+  </aside>
+
+  <section id="center" class="hilbert">
+    <div id="welcome">
+      <h1>Galileu Galilei</h1>
+      <p id="boot">Preparando o Python do navegador (uns 30 MB na primeira vez)…</p>
+    </div>
+    <div id="result"></div>
+  </section>
+</main>
+</body>
+</html>
